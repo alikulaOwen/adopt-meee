@@ -1,0 +1,27 @@
+{
+    "name": "adopt-me",
+    "version": "1.0.0",
+    "description": "Learning react",
+    "main": "index.js",
+    "scripts": {
+        "dev": "parcel src/index.html",
+        "format": "prettier --write \"src/**/*.{js,jsx}\"",
+        "lint": "eslint  \"src/**/*.{js,jsx}\" --quiet"
+    },
+    "author": "Caldewood Owen Alikula",
+    "license": "ISC",
+    "devDependencies": {
+        "eslint": "^8.4.1",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-react-hooks": "^4.3.0",
+        "parcel": "^2.0.1",
+        "prettier": "^2.5.1"
+    },
+    "dependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "browserslist": [
+        "last 2 versions"
+    ]
+}
