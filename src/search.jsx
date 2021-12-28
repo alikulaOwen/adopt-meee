@@ -1,28 +1,25 @@
-
-
-/* eslint-disable react-hooks/rules-of-hooks */
-/* eslint-disable import/no-unresolved */
-
 import React, { useEffect, useState } from "react";
+import useBreedList from "./useBreedList";
 import Pet from "./pet";
 
 const ANIMAL = ["dog", "cat", "reptile", "bird"];
 
 export default function search() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  const [location, setLocation] = useState("Seattle, WA");
+  const [location, setLocation] = useState("");
   const [animal, setAnimal] = useState("");
   const [breed, setBreed] =useState('');
   const [pets, setPets] = useState([])
-  const breeds = [];
+  const [breeds] = useBreedList(animal)
+  //const breeds = [];
 
 
   useEffect(() => {
-    requirePets();
+    requestPets();
   }, []
   )
 
-  async function requirePets(){
+  async function requestPets(){
       const res = await fetch (
           `http://pets-v2.dev-apis.com/pets?animal=${animal}&location=${location}&breed=${breed}`
           )
@@ -36,7 +33,14 @@ export default function search() {
 
   return (
     <div className="search-params">
-      <form>
+      <form
+      onSubmit={
+        (e)=>{
+          e.preventDefault();
+          requestPets()
+        }
+      }
+      >
         <label>
           Location
           <input
